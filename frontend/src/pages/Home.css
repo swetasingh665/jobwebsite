@@ -1,0 +1,68 @@
+/* Main layout */
+.home {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background: #f3f2ef;
+}
+
+/* LEFT SIDEBAR */
+.left {
+  flex: 1;
+  max-width: 25%;
+}
+
+/* CENTER */
+.center {
+  flex: 2;
+  max-width: 50%;
+}
+
+/* RIGHT SIDEBAR */
+.right {
+  flex: 1;
+  max-width: 25%;
+}
+
+/* Card style */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Search box */
+.search input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Button */
+button {
+  padding: 6px 10px;
+  background: #0a66c2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #004182;
+}
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .left, .center, .right {
+    max-width: 100%;
+  }
+}

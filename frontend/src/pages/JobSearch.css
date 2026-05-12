@@ -1,0 +1,41 @@
+.job-page {
+  width: 800px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+/* SEARCH */
+.search-bar input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.filters select {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* JOB CARD */
+.job-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+}
+
+.type {
+  background: #0073b1;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+}

@@ -1,0 +1,58 @@
+.companies {
+  padding: 20px;
+  background: #f3f2ef;
+  min-height: 100vh;
+}
+
+.search-box {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+/* grid */
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+/* card */
+.company-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+.company-card:hover {
+  transform: translateY(-5px);
+}
+
+/* logo */
+.company-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* buttons */
+.follow-btn {
+  background: #0a66c2;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.following-btn {
+  background: #e4e6eb;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}

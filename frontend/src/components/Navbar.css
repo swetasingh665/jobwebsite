@@ -1,0 +1,88 @@
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a66c2;
+  padding: 10px 30px;
+  color: white;
+}
+
+/* LEFT */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  margin: 0;
+}
+
+/* SEARCH */
+.search {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+/* LINKS */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+}
+
+.nav-item svg {
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  color: #d1e7ff;
+}
+
+/* SIGNUP BUTTON */
+.signup {
+  background: white;
+  color: #0a66c2;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+/* MOBILE MENU */
+.menu-btn {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #0a66c2;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
