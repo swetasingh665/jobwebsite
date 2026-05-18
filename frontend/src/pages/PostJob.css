@@ -1,55 +1,120 @@
-.preview-card {
-  width: 320px;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  height: fit-content;
-}
+/* GLOBAL */
 
-.preview-card h3 {
-  margin-bottom: 15px;
-}
-
-/* header */
-.preview-header {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-/* fake logo */
-.logo-box {
-  width: 45px;
-  height: 45px;
-  background: #e6f0ff;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
-/* text */
-.preview-card h4 {
+*{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.company {
-  color: gray;
-  font-size: 14px;
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
 }
 
-.location,
-.type {
-  font-size: 14px;
-  margin-top: 8px;
+/* PAGE */
+
+.postjob-page{
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 20px;
 }
 
-/* description */
-.desc {
-  margin-top: 12px;
-  font-size: 14px;
-  color: #444;
-  line-height: 1.4;
+/* HEADER */
+
+.postjob-header{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.postjob-header h1{
+  font-size: 50px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.postjob-header p{
+  font-size: 18px;
+  color: #666;
+}
+
+/* FORM */
+
+.postjob-form{
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* INPUTS */
+
+.postjob-form input,
+.postjob-form select,
+.postjob-form textarea{
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* FOCUS */
+
+.postjob-form input:focus,
+.postjob-form select:focus,
+.postjob-form textarea:focus{
+  border-color: #0077ff;
+  box-shadow: 0 0 5px rgba(0,119,255,0.4);
+}
+
+/* TEXTAREA */
+
+.postjob-form textarea{
+  resize: none;
+}
+
+/* BUTTON */
+
+.postjob-form button{
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #0077ff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.postjob-form button:hover{
+  background: #005edb;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .postjob-header h1{
+    font-size: 35px;
+  }
+
+  .postjob-header p{
+    font-size: 15px;
+  }
+
+  .postjob-form{
+    padding: 25px;
+  }
+
 }

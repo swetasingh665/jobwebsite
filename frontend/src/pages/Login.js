@@ -3,65 +3,154 @@ import { useNavigate, Link } from "react-router-dom";
 import "./Auth.css";
 
 function Login() {
-  const [form, setForm] = useState({
-    email: "",
-    password: ""
-  });
 
   const navigate = useNavigate();
 
+  // FORM STATE
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  // ERROR STATE
+
+  const [error, setError] = useState("");
+
+  // SHOW PASSWORD
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  // HANDLE CHANGE
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+
   };
 
-  const handleSubmit = (e) => {
+  // LOGIN FUNCTION
+
+  const handleLogin = (e) => {
+
     e.preventDefault();
 
-    if (!form.email || !form.password) {
-      alert("Please fill all fields ❌");
-      return;
-    }
+    // DEMO LOGIN
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const demoEmail = "admin@gmail.com";
+    const demoPassword = "123456";
+
+    // VALIDATION
 
     if (
-      storedUser &&
-      storedUser.email === form.email &&
-      storedUser.password === form.password
+      formData.email === demoEmail &&
+      formData.password === demoPassword
     ) {
-      alert("Login Successful ✅");
+
+      alert("Login Successful!");
+
       navigate("/");
+
     } else {
-      alert("Wrong email or password ❌");
+
+      setError("Invalid Email or Password");
+
     }
+
   };
 
   return (
-    <div className="auth-container">
-      <form className="auth-box" onSubmit={handleSubmit}>
-        <h2>Login</h2>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-        />
+    <div className="auth-page">
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-        />
+      {/* LOGIN CARD */}
 
-        <button type="submit">Login</button>
+      <div className="auth-card">
+
+        <h1>
+          Welcome Back
+        </h1>
 
         <p>
-          Don't have an account? <Link to="/signup">Signup</Link>
+          Login to continue
         </p>
-      </form>
+
+        {/* FORM */}
+
+        <form onSubmit={handleLogin}>
+
+          {/* EMAIL */}
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+
+          {/* PASSWORD */}
+
+          <div className="password-box">
+
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Enter Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+
+            <span
+              className="show-btn"
+              onClick={() =>
+                setShowPassword(!showPassword)
+              }
+            >
+              {showPassword ? "Hide" : "Show"}
+            </span>
+
+          </div>
+
+          {/* ERROR */}
+
+          {error && (
+            <p className="error-text">
+              {error}
+            </p>
+          )}
+
+          {/* BUTTON */}
+
+          <button type="submit">
+            Login
+          </button>
+
+        </form>
+
+        {/* SIGNUP */}
+
+        <div className="auth-footer">
+
+          <p>
+            Don't have an account?
+          </p>
+
+          <Link to="/signup">
+            Signup
+          </Link>
+
+        </div>
+
+      </div>
+
     </div>
+
   );
 }
 

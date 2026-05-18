@@ -1,0 +1,171 @@
+/* GLOBAL */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+}
+
+/* PAGE */
+
+.notification-page{
+  width: 100%;
+  min-height: 100vh;
+  padding: 50px 20px;
+}
+
+/* HEADER */
+
+.notification-header{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.notification-header h1{
+  font-size: 45px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.notification-header p{
+  color: #666;
+  font-size: 18px;
+}
+
+/* LIST */
+
+.notification-list{
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARD */
+
+.notification-card{
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+/* UNREAD */
+
+.unread{
+  border-left: 6px solid #0077ff;
+}
+
+/* READ */
+
+.read{
+  opacity: 0.7;
+}
+
+/* CONTENT */
+
+.notification-content h2{
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.notification-content p{
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.notification-content span{
+  color: #888;
+  font-size: 14px;
+}
+
+/* BUTTONS */
+
+.notification-buttons{
+  display: flex;
+  gap: 10px;
+}
+
+/* BUTTON */
+
+.notification-buttons button{
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* READ BUTTON */
+
+.read-btn{
+  background: #0077ff;
+  color: white;
+}
+
+.read-btn:hover{
+  background: #005edb;
+}
+
+/* DELETE BUTTON */
+
+.delete-btn{
+  background: #ff4d4d;
+  color: white;
+}
+
+.delete-btn:hover{
+  background: #e60000;
+}
+
+/* EMPTY */
+
+.empty-text{
+  text-align: center;
+  color: #666;
+  margin-top: 40px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .notification-card{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notification-buttons{
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .notification-buttons button{
+    width: 100%;
+  }
+
+  .notification-header h1{
+    font-size: 35px;
+  }
+
+}

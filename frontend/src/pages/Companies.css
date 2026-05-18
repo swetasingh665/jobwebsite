@@ -1,58 +1,140 @@
-.companies {
-  padding: 20px;
-  background: #f3f2ef;
+/* GLOBAL */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+}
+
+/* PAGE */
+
+.companies-page{
+  width: 100%;
   min-height: 100vh;
+  padding: 60px 20px;
 }
 
-.search-box {
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-}
+/* HEADER */
 
-/* grid */
-.company-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-}
-
-/* card */
-.company-card {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
+.companies-header{
   text-align: center;
-  border: 1px solid #ddd;
+  margin-bottom: 50px;
+}
+
+.companies-header h1{
+  font-size: 50px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.companies-header p{
+  font-size: 18px;
+  color: #666;
+}
+
+/* GRID */
+
+.companies-grid{
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 30px;
+}
+
+/* CARD */
+
+.company-card{
+  background: white;
+  padding: 30px 20px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: 0.3s;
 }
 
-.company-card:hover {
+.company-card:hover{
   transform: translateY(-5px);
 }
 
-/* logo */
-.company-logo {
-  width: 60px;
-  height: 60px;
+/* LOGO */
+
+.company-logo{
+  width: 90px;
+  height: 90px;
   object-fit: contain;
+  margin-bottom: 20px;
 }
 
-/* buttons */
-.follow-btn {
-  background: #0a66c2;
+/* TEXT */
+
+.company-card h2{
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.company-card p{
+  color: #555;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* BUTTONS */
+
+.view-btn{
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #0077ff;
   color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.following-btn {
-  background: #e4e6eb;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 20px;
+.view-btn:hover{
+  background: #005edb;
+}
+
+.follow-btn{
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px;
+  border: 2px solid #0077ff;
+  border-radius: 10px;
+  background: white;
+  color: #0077ff;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.follow-btn:hover{
+  background: #0077ff;
+  color: white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .companies-header h1{
+    font-size: 35px;
+  }
+
+  .companies-header p{
+    font-size: 15px;
+  }
+
 }

@@ -1,96 +1,181 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Jobs.css";
 
-const jobsData = [
-  { id: 1, title: "Frontend Developer", company: "Google", location: "Delhi", category: "IT" },
-  { id: 2, title: "Backend Developer", company: "Amazon", location: "Bangalore", category: "IT" },
-  { id: 3, title: "UI/UX Designer", company: "Adobe", location: "Mumbai", category: "Design" },
-  { id: 4, title: "HR Executive", company: "Reliance", location: "Mumbai", category: "HR" },
-  { id: 5, title: "Data Analyst", company: "Accenture", location: "Delhi", category: "Data" },
-  { id: 6, title: "React Developer", company: "Infosys", location: "Chennai", category: "IT" },
-  { id: 7, title: "Java Developer", company: "HCL", location: "Gurgaon", category: "IT" },
-  { id: 8, title: "Marketing Manager", company: "Zomato", location: "Delhi", category: "Marketing" },
-  { id: 9, title: "DevOps Engineer", company: "IBM", location: "Bangalore", category: "IT" },
-  { id: 10, title: "Product Manager", company: "Flipkart", location: "Bangalore", category: "Management" },
-  { id: 11, title: "Cloud Engineer", company: "Oracle", location: "Mumbai", category: "IT" },
-  { id: 12, title: "Cyber Security", company: "Deloitte", location: "Delhi", category: "Security" },
-  { id: 13, title: "AI Engineer", company: "Nvidia", location: "Pune", category: "AI" },
-  { id: 14, title: "ML Engineer", company: "Meta", location: "Remote", category: "AI" },
-  { id: 15, title: "QA Tester", company: "Cognizant", location: "Hyderabad", category: "Testing" },
-  { id: 16, title: "Angular Dev", company: "Paytm", location: "Noida", category: "IT" },
-  { id: 17, title: "Mobile Dev", company: "Swiggy", location: "Bangalore", category: "IT" },
-  { id: 18, title: "Finance Analyst", company: "TCS", location: "Pune", category: "Finance" },
-  { id: 19, title: "Graphic Designer", company: "Canva", location: "Remote", category: "Design" },
-  { id: 20, title: "Support Executive", company: "Wipro", location: "Noida", category: "Support" }
-];
-
 function Jobs() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
-  const [appliedJobs, setAppliedJobs] = useState([]);
 
-  // 🔥 Apply function
-  const handleApply = (job) => {
-    setAppliedJobs([...appliedJobs, job.id]);
-    alert(`You applied for ${job.title}`);
+  // JOB DATA
+
+  const jobsData = [
+
+    {
+      id: 1,
+      role: "Frontend Developer",
+      company: "Google",
+      location: "Delhi",
+      salary: "₹50,000",
+      experience: "1 Year",
+      type: "Full-time",
+      skills: "React, JavaScript, CSS",
+    },
+
+    {
+      id: 2,
+      role: "Backend Developer",
+      company: "Microsoft",
+      location: "Noida",
+      salary: "₹70,000",
+      experience: "2 Years",
+      type: "Remote",
+      skills: "Node.js, Express, MongoDB",
+    },
+
+    {
+      id: 3,
+      role: "UI/UX Designer",
+      company: "Amazon",
+      location: "Gurgaon",
+      salary: "₹45,000",
+      experience: "3 Years",
+      type: "Part-time",
+      skills: "Figma, Adobe XD",
+    },
+
+    {
+      id: 4,
+      role: "MERN Stack Developer",
+      company: "Infosys",
+      location: "Bangalore",
+      salary: "₹80,000",
+      experience: "2 Years",
+      type: "Full-time",
+      skills: "MongoDB, Express, React, Node",
+    },
+
+    {
+      id: 5,
+      role: "React Intern",
+      company: "TCS",
+      location: "Noida",
+      salary: "₹20,000",
+      experience: "Fresher",
+      type: "Internship",
+      skills: "HTML, CSS, React",
+    },
+
+  ];
+
+  // APPLY FUNCTION
+
+  const handleApply = (role) => {
+    alert(`Applied Successfully for ${role}`);
   };
 
-  const filteredJobs = jobsData.filter((job) => {
-    return (
-      job.title.toLowerCase().includes(search.toLowerCase()) &&
-      (category === "All" || job.category === category)
-    );
-  });
+  // SAVE JOB FUNCTION
+
+  const handleSaveJob = (role) => {
+    alert(`${role} saved successfully`);
+  };
 
   return (
-    <div className="jobs-container">
 
-      <h1>Find Your Dream Job</h1>
+    <div className="jobs-page">
 
-      {/* 🔍 Search + Filter */}
-      <div className="filters">
-        <input
-          type="text"
-          placeholder="Search jobs..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+      {/* HEADER */}
 
-        <select onChange={(e) => setCategory(e.target.value)}>
-          <option>All</option>
-          <option>IT</option>
-          <option>Design</option>
-          <option>HR</option>
-          <option>Marketing</option>
-          <option>Finance</option>
-          <option>AI</option>
-        </select>
+      <div className="jobs-header">
+
+        <h1>
+          Latest Jobs
+        </h1>
+
+        <p>
+          Find your dream job today
+        </p>
+
       </div>
 
-      {/* 🧾 Job Cards */}
+      {/* JOB GRID */}
+
       <div className="jobs-grid">
-        {filteredJobs.map((job) => (
-          <div key={job.id} className="job-card">
 
-            <h3>{job.title}</h3>
-            <p className="company">{job.company}</p>
-            <p className="location">{job.location}</p>
-            <span className="tag">{job.category}</span>
+        {jobsData.map((job) => (
 
-            {/* 🔥 UPDATED BUTTON */}
+          <div className="job-card" key={job.id}>
+
+            {/* TOP SECTION */}
+
+            <div className="job-top">
+
+              <div className="company-logo">
+                {job.company.charAt(0)}
+              </div>
+
+              <div>
+
+                <h2>
+                  {job.role}
+                </h2>
+
+                <span>
+                  {job.company}
+                </span>
+
+              </div>
+
+            </div>
+
+            {/* JOB DETAILS */}
+
+            <div className="job-details">
+
+              <p>
+                📍 {job.location}
+              </p>
+
+              <p>
+                💼 {job.type}
+              </p>
+
+              <p>
+                ⏳ {job.experience}
+              </p>
+
+              <p>
+                💰 {job.salary}
+              </p>
+
+              <p>
+                🛠 {job.skills}
+              </p>
+
+            </div>
+
+            {/* APPLY BUTTON */}
+
             <button
               className="apply-btn"
-              onClick={() => handleApply(job)}
-              disabled={appliedJobs.includes(job.id)}
+              onClick={() => handleApply(job.role)}
             >
-              {appliedJobs.includes(job.id) ? "Applied" : "Apply"}
+              Apply Now
+            </button>
+
+            {/* SAVE BUTTON */}
+
+            <button
+              className="save-btn"
+              onClick={() => handleSaveJob(job.role)}
+            >
+              Save Job
             </button>
 
           </div>
+
         ))}
+
       </div>
 
     </div>
+
   );
 }
 

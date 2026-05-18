@@ -1,0 +1,88 @@
+.search-page{
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* SEARCH BAR */
+
+.search-box{
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.search-box input,
+.search-box select{
+  flex: 1;
+  min-width: 180px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-box button{
+  padding: 14px 30px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-box button:hover{
+  background: #005fe0;
+}
+
+/* JOB CARDS */
+
+.jobs-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: 20px;
+}
+
+.job-card{
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.job-card h2{
+  color: #0077ff;
+  margin-bottom: 10px;
+}
+
+.job-card p{
+  margin: 8px 0;
+  color: #555;
+}
+
+.apply-btn{
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.apply-btn:hover{
+  background: #005fe0;
+}

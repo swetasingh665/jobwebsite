@@ -15,8 +15,13 @@ import More from "./pages/More";
 import Companies from "./pages/Companies";
 import PostJob from "./pages/PostJob";
 import Notifications from "./pages/Notifications";
-import Profile from "./pages/ProfileWizard";
+import Profile from "./pages/Profile";
 import ViewProfile from "./pages/ViewProfile";
+import JobCard from "./pages/JobCard";
+import SearchFilter from "./pages/SearchFilter";
+import AdminDashboard from "./pages/AdminDashboard";
+import RecruiterDashboard from "./pages/RecruiterDashboard";
+
 function App() {
   return (
     <BrowserRouter>
@@ -38,6 +43,11 @@ function App() {
        <Route path="/notifications" element={<Notifications />} />
        <Route path="/profile" element={<Profile />} />
 <Route path="/view" element={<ViewProfile />} />
+<Route path ="/job-card" element={<JobCard/>}/>
+ <Route path="/search" element={<SearchFilter />} />
+ <Route path="/admin" element={<AdminDashboard />} />
+  <Route path="/recruiter" element={<RecruiterDashboard />} />
+  
       </Routes>
       <Footer />
     </BrowserRouter>

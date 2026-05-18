@@ -1,50 +1,260 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 
 function Signup() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: ""
-  });
 
   const navigate = useNavigate();
 
+  // FORM STATE
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  // ERROR STATE
+
+  const [error, setError] = useState("");
+
+  // SUCCESS MESSAGE
+
+  const [success, setSuccess] = useState("");
+
+  // SHOW PASSWORD
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  // HANDLE INPUT CHANGE
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+
   };
 
-  const handleSubmit = (e) => {
+  // SIGNUP FUNCTION
+
+  const handleSignup = (e) => {
+
     e.preventDefault();
 
-    if (!form.name || !form.email || !form.password) {
-      alert("Please fill all fields ❌");
+    // EMPTY CHECK
+
+    if (
+      !formData.fullName ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+
+      setError("Please fill all fields");
+      setSuccess("");
+
       return;
     }
 
-    localStorage.setItem("user", JSON.stringify(form));
+    // EMAIL VALIDATION
 
-    alert("Signup Successful ✅");
-    navigate("/login");
+    const emailPattern =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(formData.email)) {
+
+      setError("Invalid Email Address");
+      setSuccess("");
+
+      return;
+    }
+
+    // PASSWORD LENGTH
+
+    if (formData.password.length < 6) {
+
+      setError(
+        "Password must be at least 6 characters"
+      );
+
+      setSuccess("");
+
+      return;
+    }
+
+    // PASSWORD MATCH
+
+    if (
+      formData.password !==
+      formData.confirmPassword
+    ) {
+
+      setError("Passwords do not match");
+      setSuccess("");
+
+      return;
+    }
+
+    // SAVE USER
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        fullName: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+      })
+    );
+
+    // SUCCESS
+
+    setError("");
+
+    setSuccess(
+      "Account Created Successfully!"
+    );
+
+    // RESET FORM
+
+    setFormData({
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+
+    // REDIRECT LOGIN
+
+    setTimeout(() => {
+
+      navigate("/login");
+
+    }, 2000);
+
   };
 
   return (
-    <div className="auth-container">
-      <form className="auth-box" onSubmit={handleSubmit}>
-        <h2>Create Account</h2>
 
-        <input type="text" name="name" placeholder="Full Name" onChange={handleChange} />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+    <div className="auth-page">
 
-        <button type="submit">Sign Up</button>
+      {/* SIGNUP CARD */}
+
+      <div className="auth-card">
+
+        <h1>
+          Create Account
+        </h1>
 
         <p>
-          Already have an account? <Link to="/login">Login</Link>
+          Signup to continue
         </p>
-      </form>
+
+        {/* FORM */}
+
+        <form onSubmit={handleSignup}>
+
+          {/* FULL NAME */}
+
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Enter Full Name"
+            value={formData.fullName}
+            onChange={handleChange}
+          />
+
+          {/* EMAIL */}
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+
+          {/* PASSWORD */}
+
+          <div className="password-box">
+
+            <input
+              type={
+                showPassword ? "text" : "password"
+              }
+              name="password"
+              placeholder="Enter Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+
+            <span
+              className="show-btn"
+              onClick={() =>
+                setShowPassword(!showPassword)
+              }
+            >
+              {showPassword ? "Hide" : "Show"}
+            </span>
+
+          </div>
+
+          {/* CONFIRM PASSWORD */}
+
+          <input
+            type={
+              showPassword ? "text" : "password"
+            }
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          />
+
+          {/* ERROR */}
+
+          {error && (
+            <p className="error-text">
+              {error}
+            </p>
+          )}
+
+          {/* SUCCESS */}
+
+          {success && (
+            <p className="success-text">
+              {success}
+            </p>
+          )}
+
+          {/* BUTTON */}
+
+          <button type="submit">
+            Create Account
+          </button>
+
+        </form>
+
+        {/* LOGIN */}
+
+        <div className="auth-footer">
+
+          <p>
+            Already have an account?
+          </p>
+
+          <Link to="/login">
+            Login
+          </Link>
+
+        </div>
+
+      </div>
+
     </div>
+
   );
 }
 

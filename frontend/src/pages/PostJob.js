@@ -2,99 +2,218 @@ import React, { useState } from "react";
 import "./PostJob.css";
 
 function PostJob() {
-  const [job, setJob] = useState({
-    title: "",
+
+  // FORM STATE
+
+  const [jobData, setJobData] = useState({
+    role: "",
     company: "",
     location: "",
+    salary: "",
+    experience: "",
     type: "",
+    skills: "",
     description: "",
   });
 
-  const [errors, setErrors] = useState({});
+  // HANDLE CHANGE
 
   const handleChange = (e) => {
-    setJob({ ...job, [e.target.name]: e.target.value });
+    setJobData({
+      ...jobData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  // ✅ validation function
-  const validate = () => {
-    let newErrors = {};
-
-    if (!job.title) newErrors.title = "Job title required";
-    if (!job.company) newErrors.company = "Company required";
-    if (!job.location) newErrors.location = "Location required";
-    if (!job.type) newErrors.type = "Select job type";
-    if (!job.description) newErrors.description = "Description required";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  // SUBMIT FUNCTION
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    alert(`
+Job Posted Successfully!
 
-    // 🔥 Save job
-    const existingJobs = JSON.parse(localStorage.getItem("jobs")) || [];
-    localStorage.setItem("jobs", JSON.stringify([...existingJobs, job]));
+Role: ${jobData.role}
+Company: ${jobData.company}
+    `);
 
-    // 🔔 Save notification
-    const existingNoti = JSON.parse(localStorage.getItem("notifications")) || [];
-    const newNoti = {
-      message: `New job: ${job.title} at ${job.company}`,
-      time: new Date().toLocaleString(),
-    };
+    // RESET FORM
 
-    localStorage.setItem(
-      "notifications",
-      JSON.stringify([newNoti, ...existingNoti])
-    );
-
-    alert("Job Posted ✅");
-
-    setJob({
-      title: "",
+    setJobData({
+      role: "",
       company: "",
       location: "",
+      salary: "",
+      experience: "",
       type: "",
+      skills: "",
       description: "",
     });
   };
 
   return (
-    <div className="postjob-container">
-      <form className="postjob-form" onSubmit={handleSubmit}>
-        <h2>Post a Job</h2>
 
-        <input name="title" placeholder="Job Title" value={job.title} onChange={handleChange} />
-        {errors.title && <p className="error">{errors.title}</p>}
+    <div className="postjob-page">
 
-        <input name="company" placeholder="Company Name" value={job.company} onChange={handleChange} />
-        {errors.company && <p className="error">{errors.company}</p>}
+      {/* HEADER */}
 
-        <input name="location" placeholder="Location" value={job.location} onChange={handleChange} />
-        {errors.location && <p className="error">{errors.location}</p>}
+      <div className="postjob-header">
 
-        <select name="type" value={job.type} onChange={handleChange}>
-          <option value="">Select Job Type</option>
-          <option>Full-time</option>
-          <option>Part-time</option>
-          <option>Internship</option>
+        <h1>
+          Post a New Job
+        </h1>
+
+        <p>
+          Hire top talent for your company
+        </p>
+
+      </div>
+
+      {/* FORM */}
+
+      <form
+        className="postjob-form"
+        onSubmit={handleSubmit}
+      >
+
+        {/* JOB ROLE */}
+
+        <input
+          type="text"
+          name="role"
+          placeholder="Job Role"
+          value={jobData.role}
+          onChange={handleChange}
+          required
+        />
+
+        {/* COMPANY NAME */}
+
+        <input
+          type="text"
+          name="company"
+          placeholder="Company Name"
+          value={jobData.company}
+          onChange={handleChange}
+          required
+        />
+
+        {/* LOCATION */}
+
+        <input
+          type="text"
+          name="location"
+          placeholder="Location"
+          value={jobData.location}
+          onChange={handleChange}
+          required
+        />
+
+        {/* SALARY */}
+
+        <input
+          type="text"
+          name="salary"
+          placeholder="Salary"
+          value={jobData.salary}
+          onChange={handleChange}
+          required
+        />
+
+        {/* EXPERIENCE */}
+
+        <select
+          name="experience"
+          value={jobData.experience}
+          onChange={handleChange}
+          required
+        >
+
+          <option value="">
+            Experience
+          </option>
+
+          <option value="Fresher">
+            Fresher
+          </option>
+
+          <option value="1 Year">
+            1 Year
+          </option>
+
+          <option value="2 Years">
+            2 Years
+          </option>
+
+          <option value="3 Years">
+            3 Years
+          </option>
+
         </select>
-        {errors.type && <p className="error">{errors.type}</p>}
+
+        {/* JOB TYPE */}
+
+        <select
+          name="type"
+          value={jobData.type}
+          onChange={handleChange}
+          required
+        >
+
+          <option value="">
+            Job Type
+          </option>
+
+          <option value="Full-time">
+            Full-time
+          </option>
+
+          <option value="Remote">
+            Remote
+          </option>
+
+          <option value="Part-time">
+            Part-time
+          </option>
+
+          <option value="Internship">
+            Internship
+          </option>
+
+        </select>
+
+        {/* SKILLS */}
+
+        <input
+          type="text"
+          name="skills"
+          placeholder="Skills Required"
+          value={jobData.skills}
+          onChange={handleChange}
+          required
+        />
+
+        {/* DESCRIPTION */}
 
         <textarea
           name="description"
-          placeholder="Description"
-          value={job.description}
+          placeholder="Job Description"
+          rows="6"
+          value={jobData.description}
           onChange={handleChange}
-        />
-        {errors.description && <p className="error">{errors.description}</p>}
+          required
+        ></textarea>
 
-        <button type="submit">Post Job</button>
+        {/* SUBMIT BUTTON */}
+
+        <button type="submit">
+          Post Job
+        </button>
+
       </form>
+
     </div>
+
   );
 }
 
