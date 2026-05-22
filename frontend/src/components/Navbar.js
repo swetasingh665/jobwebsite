@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import about from "../assets/about.png";
+/*import about from "../assets/about.png";*/
 
 import {
   FaHome,
@@ -23,7 +23,7 @@ function Navbar() {
 
       {/* LEFT */}
       <div className="nav-left">
-        <h2 className="logo">JobPortal</h2>
+        <h2 className="logo">Job Portal</h2>
 
         <input
           type="text"

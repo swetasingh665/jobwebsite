@@ -6,6 +6,7 @@ function Home() {
   // JOB DATA
 
   const jobsData = [
+
     {
       id: 1,
       role: "Frontend Developer",
@@ -55,6 +56,7 @@ function Home() {
       experience: "Fresher",
       type: "Internship",
     },
+
   ];
 
   // STATES
@@ -64,11 +66,13 @@ function Home() {
   const [location, setLocation] = useState("");
   const [experience, setExperience] = useState("");
 
-  const handleApply = (jobRole) => {
-  alert(`Applied Successfully for ${jobRole}`);
-};
+  // APPLY BUTTON
 
-  // FILTERED JOBS
+  const handleApply = (jobRole) => {
+    alert(`Applied Successfully for ${jobRole}`);
+  };
+
+  // FILTER JOBS
 
   const filteredJobs = jobsData.filter((job) => {
 
@@ -97,15 +101,13 @@ function Home() {
 
     <div className="home">
 
-      {/* HERO */}
+      {/* HERO SECTION */}
 
       <section className="hero">
 
         <div className="hero-overlay">
 
-          <h1>
-            Find Your Dream Job Today
-          </h1>
+          <h1>Find Your Dream Job Today</h1>
 
           <p>
             Search thousands of jobs from top companies
@@ -115,16 +117,14 @@ function Home() {
 
           <div className="search-box">
 
-            {/* JOB ROLE */}
+            {/* ROLE */}
 
             <select
               value={jobRole}
               onChange={(e) => setJobRole(e.target.value)}
-              >
+            >
 
-              <option value="">
-                Job Role
-              </option>
+              <option value="">Job Role</option>
 
               <option value="Frontend Developer">
                 Frontend Developer
@@ -155,9 +155,7 @@ function Home() {
               onChange={(e) => setJobType(e.target.value)}
             >
 
-              <option value="">
-                Job Type
-              </option>
+              <option value="">Job Type</option>
 
               <option value="Internship">
                 Internship
@@ -184,29 +182,17 @@ function Home() {
               onChange={(e) => setLocation(e.target.value)}
             >
 
-              <option value="">
-                Location
-              </option>
+              <option value="">Location</option>
 
-              <option value="Delhi">
-                Delhi
-              </option>
+              <option value="Delhi">Delhi</option>
 
-              <option value="Mumbai">
-                Mumbai
-              </option>
+              <option value="Mumbai">Mumbai</option>
 
-              <option value="Bangalore">
-                Bangalore
-              </option>
+              <option value="Bangalore">Bangalore</option>
 
-              <option value="Gurgaon">
-                Gurgaon
-              </option>
+              <option value="Gurgaon">Gurgaon</option>
 
-              <option value="Noida">
-                Noida
-              </option>
+              <option value="Noida">Noida</option>
 
             </select>
 
@@ -217,25 +203,15 @@ function Home() {
               onChange={(e) => setExperience(e.target.value)}
             >
 
-              <option value="">
-                Experience
-              </option>
+              <option value="">Experience</option>
 
-              <option value="Fresher">
-                Fresher
-              </option>
+              <option value="Fresher">Fresher</option>
 
-              <option value="1">
-                1 Year
-              </option>
+              <option value="1">1 Year</option>
 
-              <option value="2">
-                2 Years
-              </option>
+              <option value="2">2 Years</option>
 
-              <option value="3">
-                3 Years
-              </option>
+              <option value="3">3 Years</option>
 
             </select>
 
@@ -245,16 +221,12 @@ function Home() {
 
       </section>
 
-      {/* JOBS */}
+      {/* JOB SECTION */}
 
       <section className="jobs-section">
 
         <div className="section-title">
-
-          <h2>
-            Featured Jobs
-          </h2>
-
+          <h2>Featured Jobs</h2>
         </div>
 
         <div className="jobs-grid">
@@ -266,6 +238,8 @@ function Home() {
               <div className="job-card" key={job.id}>
 
                 <div className="job-top">
+
+                  {/* COMPANY LOGO */}
 
                   <div className="company-logo">
                     {job.company.charAt(0)}
@@ -281,32 +255,28 @@ function Home() {
 
                 </div>
 
+                {/* JOB DETAILS */}
+
                 <div className="job-details">
 
-                  <p>
-                    📍 {job.location}
-                  </p>
+                  <p>📍 {job.location}</p>
 
-                  <p>
-                    💼 {job.type}
-                  </p>
+                  <p>💼 {job.type}</p>
 
-                  <p>
-                    ⏳ {job.experience}
-                  </p>
+                  <p>⏳ {job.experience}</p>
 
-                  <p>
-                    💰 {job.salary}
-                  </p>
+                  <p>💰 {job.salary}</p>
 
                 </div>
 
-               <button
-  className="apply-btn"
-  onClick={() => handleApply(job.role)}
->
-  Apply Now
-</button>
+                {/* APPLY BUTTON */}
+
+                <button
+                  className="apply-btn"
+                  onClick={() => handleApply(job.role)}
+                >
+                  Apply Now
+                </button>
 
               </div>
 
@@ -327,6 +297,7 @@ function Home() {
     </div>
 
   );
+
 }
 
 export default Home;

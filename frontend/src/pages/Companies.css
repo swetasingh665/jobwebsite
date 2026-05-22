@@ -1,140 +1,141 @@
-/* GLOBAL */
+/* ================= COMPANIES SECTION ================= */
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body{
-  font-family: Arial, Helvetica, sans-serif;
+.companies{
+  width: 100%;
+  padding: 80px 20px;
   background: #f4f7fb;
 }
 
-/* PAGE */
+/* ================= TITLE ================= */
 
-.companies-page{
-  width: 100%;
-  min-height: 100vh;
-  padding: 60px 20px;
-}
-
-/* HEADER */
-
-.companies-header{
+.companies-title{
   text-align: center;
   margin-bottom: 50px;
 }
 
-.companies-header h1{
-  font-size: 50px;
+.companies-title h1{
+  font-size: 42px;
   color: #222;
   margin-bottom: 10px;
 }
 
-.companies-header p{
+.companies-title p{
   font-size: 18px;
   color: #666;
 }
 
-/* GRID */
+/* ================= GRID ================= */
 
 .companies-grid{
   width: 100%;
   max-width: 1300px;
   margin: auto;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 25px;
 }
 
-/* CARD */
+/* ================= COMPANY CARD ================= */
 
 .company-card{
   background: white;
-  padding: 30px 20px;
-  border-radius: 18px;
+  padding: 35px 25px;
+
+  border-radius: 20px;
+
   text-align: center;
+
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: 0.3s;
+
+  transition: 0.3s ease;
 }
 
 .company-card:hover{
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-/* LOGO */
+/* ================= COMPANY LOGO ================= */
 
 .company-logo{
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
+  width: 80px;
+  height: 80px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #1677ff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+
+  font-size: 32px;
+  font-weight: bold;
+
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* ================= COMPANY NAME ================= */
+
+.company-card h2{
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+/* ================= COMPANY JOB TEXT ================= */
+
+.company-card p{
+  font-size: 15px;
+  color: #666;
   margin-bottom: 20px;
 }
 
-/* TEXT */
-
-.company-card h2{
-  font-size: 28px;
-  color: #222;
-  margin-bottom: 15px;
-}
-
-.company-card p{
-  color: #555;
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-/* BUTTONS */
+/* ================= BUTTON ================= */
 
 .view-btn{
-  width: 100%;
-  margin-top: 20px;
-  padding: 13px;
+  padding: 12px 24px;
+
   border: none;
   border-radius: 10px;
-  background: #0077ff;
+
+  background: #1677ff;
   color: white;
-  font-size: 16px;
+
+  font-size: 15px;
   font-weight: bold;
+
   cursor: pointer;
-  transition: 0.3s;
+
+  transition: 0.3s ease;
 }
 
 .view-btn:hover{
   background: #005edb;
 }
 
-.follow-btn{
-  width: 100%;
-  margin-top: 12px;
-  padding: 13px;
-  border: 2px solid #0077ff;
-  border-radius: 10px;
-  background: white;
-  color: #0077ff;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.follow-btn:hover{
-  background: #0077ff;
-  color: white;
-}
-
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:768px){
 
-  .companies-header h1{
-    font-size: 35px;
+  .companies-title h1{
+    font-size: 34px;
   }
 
-  .companies-header p{
-    font-size: 15px;
+  .companies-title p{
+    font-size: 16px;
+  }
+
+  .company-logo{
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
   }
 
 }
